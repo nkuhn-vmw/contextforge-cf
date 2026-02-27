@@ -1,0 +1,6 @@
+mcp-contextforge-gateway
+psycopg2-binary
+psycopg[binary]
+redis[hiredis]
+gunicorn
+uvicorn

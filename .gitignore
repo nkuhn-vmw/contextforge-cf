@@ -1,4 +1,4 @@
-vars-local.yml
+**/vars-local.yml
 state/
 broker-state.json
 contextforge-broker

@@ -1,0 +1,23 @@
+# ContextForge CF Deployment Variables
+# Copy to vars-local.yml and fill in real values:
+#   cp vars.yml vars-local.yml
+# Then deploy with:
+#   cd contextforge-cf-deploy && cf push --vars-file vars-local.yml
+#
+# IMPORTANT: Do not commit real secrets to version control.
+
+# Admin email for the ContextForge admin UI login
+admin_email: admin@example.com
+
+# Admin password for the ContextForge admin UI and API
+# Generate with: openssl rand -base64 32
+admin_password: CHANGE_ME
+
+# JWT secret key for token signing (min 32 characters)
+# Generate with: openssl rand -hex 64
+# Must match contextforge_jwt_secret_key in ../vars-local.yml
+jwt_secret_key: CHANGE_ME
+
+# Encryption secret for sensitive data at rest (min 32 characters)
+# Generate with: openssl rand -hex 32
+encryption_secret: CHANGE_ME

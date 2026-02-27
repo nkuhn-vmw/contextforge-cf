@@ -1,0 +1,45 @@
+---
+applications:
+  - name: contextforge
+    memory: 2G
+    disk_quota: 2G
+    instances: 1
+    buildpacks:
+      - python_buildpack
+    command: bash cf_env.sh
+    health-check-type: http
+    health-check-http-endpoint: /health
+    timeout: 180
+    services:
+      - contextforge-db
+      - contextforge-cache
+    env:
+      # Admin UI
+      MCPGATEWAY_UI_ENABLED: "true"
+      MCPGATEWAY_ADMIN_API_ENABLED: "true"
+
+      # Auth — API (basic auth)
+      BASIC_AUTH_USER: "admin"
+      BASIC_AUTH_PASSWORD: ((admin_password))
+
+      # Auth — Admin UI (email-based login)
+      PLATFORM_ADMIN_EMAIL: ((admin_email))
+      PLATFORM_ADMIN_PASSWORD: ((admin_password))
+
+      # Secrets
+      JWT_SECRET_KEY: ((jwt_secret_key))
+      AUTH_ENCRYPTION_SECRET: ((encryption_secret))
+
+      # CORS / domain (set to your CF route)
+      APP_DOMAIN: "https://contextforge.apps.tas-tdc.kuhn-labs.com"
+
+      # Security
+      SECURE_COOKIES: "true"
+      FORWARDED_ALLOW_IPS: "*"
+
+      # Cache
+      CACHE_TYPE: "redis"
+
+      # Logging
+      LOG_LEVEL: "INFO"
+      LOG_FORMAT: "json"
