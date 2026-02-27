@@ -1,0 +1,13 @@
+applications:
+  - name: contextforge-sample
+    memory: 64M
+    disk_quota: 128M
+    instances: 1
+    buildpacks:
+      - go_buildpack
+    health-check-type: http
+    health-check-http-endpoint: /health
+    env:
+      GOVERSION: go1.24
+    services:
+      - sample-gw

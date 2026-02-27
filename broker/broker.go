@@ -385,6 +385,8 @@ func (b *Broker) generateJWT(username, bindingID string) (string, error) {
 		"sub": username,
 		"iat": now.Unix(),
 		"jti": bindingID,
+		"aud": "mcpgateway-api",
+		"iss": "mcpgateway",
 	}
 
 	if b.config.ContextForge.JWTExpiryHours > 0 {
