@@ -1,0 +1,17 @@
+applications:
+  - name: contextforge-broker
+    memory: 128M
+    disk_quota: 256M
+    instances: 1
+    buildpacks:
+      - go_buildpack
+    health-check-type: http
+    health-check-http-endpoint: /health
+    env:
+      GOVERSION: go1.24
+      BROKER_USERNAME: broker-admin
+      BROKER_PASSWORD: ((broker_password))
+      CONTEXTFORGE_URL: https://contextforge.apps.tas-tdc.kuhn-labs.com
+      CONTEXTFORGE_ADMIN_USER: admin
+      CONTEXTFORGE_ADMIN_PASSWORD: ((contextforge_admin_password))
+      CONTEXTFORGE_JWT_SECRET_KEY: ((contextforge_jwt_secret_key))

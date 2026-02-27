@@ -1,0 +1,46 @@
+auth:
+  username: broker-admin
+  password: changeme
+
+contextforge:
+  url: https://contextforge.apps.tas-tdc.kuhn-labs.com
+  mcp_url: https://contextforge.apps.tas-tdc.kuhn-labs.com/mcp
+  admin_user: admin
+  admin_password: changeme
+  jwt_secret_key: changeme
+  jwt_expiry_hours: 0  # 0 = no expiry
+
+state_store:
+  path: /home/vcap/app/state/broker-state.json
+
+catalog:
+  services:
+    - id: contextforge-mcp-gateway-service
+      name: contextforge-mcp-gateway
+      description: ContextForge MCP Gateway - Model Context Protocol gateway for AI-powered development tools
+      bindable: true
+      tags:
+        - mcp
+        - gateway
+        - ai
+      metadata:
+        displayName: ContextForge MCP Gateway
+        longDescription: >-
+          ContextForge MCP Gateway provides a centralized Model Context Protocol (MCP)
+          gateway for AI-powered development tools. Bind your application to receive
+          JWT credentials for authenticated access to MCP endpoints.
+        providerDisplayName: ContextForge
+        documentationUrl: https://contextforge.apps.tas-tdc.kuhn-labs.com/docs
+        supportUrl: https://contextforge.apps.tas-tdc.kuhn-labs.com/support
+      plans:
+        - id: contextforge-mcp-gateway-standard
+          name: standard
+          description: Shared MCP gateway access with JWT authentication
+          free: true
+          metadata:
+            displayName: Standard
+            bullets:
+              - Shared MCP gateway access
+              - JWT-based authentication
+              - Per-binding credentials
+              - Access to all configured MCP servers

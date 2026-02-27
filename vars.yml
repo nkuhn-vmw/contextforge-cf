@@ -1,0 +1,18 @@
+# ContextForge Broker Deployment Variables
+# Copy to vars-local.yml and fill in real values:
+#   cp vars.yml vars-local.yml
+# Then deploy with:
+#   cf push --vars-file vars-local.yml
+#
+# The jwt_secret_key and contextforge_admin_password MUST match the values
+# used for the ContextForge app itself.
+
+# Broker basic auth password (for cf create-service-broker)
+# Generate with: openssl rand -base64 32
+broker_password: CHANGE_ME
+
+# Must match the admin_password used by the ContextForge app
+contextforge_admin_password: CHANGE_ME
+
+# Must match the JWT_SECRET_KEY used by the ContextForge app
+contextforge_jwt_secret_key: CHANGE_ME
